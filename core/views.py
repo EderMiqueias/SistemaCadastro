@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ClienteModelForm
+from .models import Endereco, Cliente
 
 
 def index(request):
@@ -25,8 +26,16 @@ def cadastrar(request):
     }
     return render(request, 'cadastrar.html', context)
 
+
 def buscar(request):
-    return render(request,"buscar.html")
+    cliente = None
+    if str(request.method) == "POST":
+        cpf = request.POST['cpf']
+        cliente = Cliente().fromCpf(cpf)
+    content = {
+        'cliente': cliente
+    }
+    return render(request,"buscar.html",content)
 
 
 def editar(request):

@@ -1,4 +1,5 @@
 from mongoengine import connect
+from sistema.db import getdb
 connect('mongo')
 
 
@@ -41,10 +42,17 @@ class Cliente:
             'cpf': self.cpf,
             'endereco': self.endereco.toJson()
         }
-    def fromJason(self,data):
+    def fromJson(self,data):
         return Cliente(
-            mid=data['mid'],
+            mid=data['id'],
             nome=data['nome'],
             cpf=data['cpf'],
             endereco=data['endereco']
         )
+    def fromCpf(self, cpf):
+        db = getdb()
+        cliente = db.clientes.find_one({'cpf':cpf})
+        if cliente:
+            cliente = self.fromJson(cliente)
+            return cliente
+        return 404
