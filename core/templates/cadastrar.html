@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+<!---->
+{% block content %}
+<div>
+  <h1>Cadastrar Clientes</h1>
+  {% if verificar_cpf %}
+  <p class="spanalert">
+    CPF de usuario já cadastrado no sistema
+  </p>
+  {% endif %}
+  <div id="formarea">
+    <form action="{% url 'cadastrar' %}" method="post" autocomplete="off">
+      {% csrf_token %}
+      <table id="mtable">
+        {{ formclient }}
+      </table>
+      <div style="text-align: right; width: 90%;">
+        <button type="submit" class="btn">Adicionar</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

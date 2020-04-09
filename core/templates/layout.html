@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Cadastro</title>
+    <link rel="stylesheet" href="../static/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+
+  <body>
+    <div class="content">
+      <nav class="navbar fixed-top">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'cadastrar' %}">Cadastrar</a>
+        <a href="{% url 'buscar' %}">Buscar</a>
+        <a href="{% url 'editar' %}">Editar</a>
+        <a href="{% url 'buscarcep' %}">Buscar CEP</a>
+        <a href="{% url 'ruas' %}">Ruas</a>
+        <a href="{% url 'backup' %}">Backup</a>
+      </nav>
+      {% block content %} {% endblock %}
+      <br />
+    </div>
+  </body>
+  <footer class="footer">
+    <p>
+      <a href="https://www.instagram.com/miqueias85594/">
+        Eder Miqueias
+      </a>
+      |
+      <a href="http://www.uast.ufrpe.br/">
+        UFRPE UAST
+      </a>
+    </p>
+  </footer>
+</html>

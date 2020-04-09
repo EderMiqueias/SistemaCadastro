@@ -1,0 +1,116 @@
+:root {
+  --mv: #1abc9c;
+  --mc: #282e33;
+}
+
+.content {
+  min-height: calc(100vh - 70px);
+}
+
+.footer {
+  height: 50px;
+  background-color: rgb(216, 216, 216);
+  padding: 10px;
+}
+.footer p {
+  text-align: left;
+}
+.footer a {
+  text-decoration: none;
+}
+
+.btn {
+  width: 30%;
+  background-color: lightgray;
+  display: inline-block;
+  border-radius: 0.5em;
+  text-decoration: none;
+  border: 0;
+  box-shadow: 3px 3px 0 3px darkgray;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.btn:active {
+  box-shadow: 0 0 0 0 darkgray, inset 4px 4px 4px darkgray;
+  transform: translate(6px, 6px);
+  color: black;
+}
+
+.navbar {
+  background-color: var(--mc);
+  border-radius: 0.5em;
+  position: relative;
+  border: 3px outset rgb(0, 0, 0);
+  padding: 15px;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: large;
+  margin-right: 25px;
+}
+
+.spanalert {
+  background-color: crimson;
+  padding: 5px;
+  width: 60%;
+}
+
+#conteudo {
+  background-color: mediumslateblue;
+  height: 20%;
+  padding: 2px;
+  width: 40%;
+  box-shadow: 5px 5px 0px darkgray;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: rgb(54, 54, 54);
+  text-align: left;
+  border-radius: 10px;
+  transition-property: width, height, background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0.1s;
+}
+
+#conteudo:hover {
+  width: 60%;
+  height: 40%;
+  background-color: darkslateblue;
+  box-shadow: 5px 5px 0px rgb(41, 41, 41);
+  color: white;
+  text-align: right;
+}
+
+h1 {
+  font-family: "Titillium Web", sans-serif;
+  margin: 20px;
+}
+
+#mtable {
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 20px;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+#mtable th {
+  font-size: 1.3em;
+  color: var(--mc);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#mtable input {
+  width: 80%;
+}
+
+#formarea {
+  background-color: mediumslateblue;
+  box-shadow: 3px 3px 0 3px darkslateblue;
+  padding: 15px;
+  border-radius: 15px;
+  width: 60%;
+}
