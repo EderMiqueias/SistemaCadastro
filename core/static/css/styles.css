@@ -53,31 +53,36 @@
 }
 
 .spanalert {
-  background-color: crimson;
-  padding: 5px;
+  background-color: rgba(220, 20, 60, 0.349);
+  border-left: 5px solid crimson;
   width: 60%;
+  margin: 10px;
+  padding: 3px;
+  border-radius: 0.2em;
+}
+
+.cliente_card {
+  margin: 20px 10px;
+  max-width: 40%;
+  box-shadow: 5px 5px 0px darkgray;
+  color: var(--mc);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #conteudo {
   background-color: mediumslateblue;
-  height: 20%;
   padding: 2px;
   width: 40%;
   box-shadow: 5px 5px 0px darkgray;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 2%;
   color: rgb(54, 54, 54);
   text-align: left;
-  border-radius: 10px;
-  transition-property: width, height, background-color;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  transition-delay: 0.1s;
+  border-radius: 0.5em;
+  transition: 1s;
+  cursor: default;
 }
 
 #conteudo:hover {
-  width: 60%;
-  height: 40%;
   background-color: darkslateblue;
   box-shadow: 5px 5px 0px rgb(41, 41, 41);
   color: white;
@@ -91,7 +96,7 @@ h1 {
 
 #mtable {
   background-color: lightgray;
-  border-radius: 5px;
+  border-radius: 0.5em;
   padding: 20px;
   width: 90%;
   margin-bottom: 20px;
@@ -111,6 +116,7 @@ h1 {
   background-color: mediumslateblue;
   box-shadow: 3px 3px 0 3px darkslateblue;
   padding: 15px;
-  border-radius: 15px;
+  border-radius: 0.5em;
   width: 60%;
+  margin: 10px;
 }

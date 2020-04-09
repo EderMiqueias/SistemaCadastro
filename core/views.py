@@ -33,7 +33,8 @@ def buscar(request):
         cpf = request.POST['cpf']
         cliente = Cliente().fromCpf(cpf)
     content = {
-        'cliente': cliente
+        'cliente': cliente,
+        'endereco': cliente.endereco if isinstance(cliente,Cliente) else None
     }
     return render(request,"buscar.html",content)
 

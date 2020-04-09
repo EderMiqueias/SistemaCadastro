@@ -4,9 +4,9 @@
 <div>
   <h1>Cadastrar Clientes</h1>
   {% if verificar_cpf %}
-  <p class="spanalert">
+  <h1 class="spanalert">
     CPF de usuario já cadastrado no sistema
-  </p>
+  </h1>
   {% endif %}
   <div id="formarea">
     <form action="{% url 'cadastrar' %}" method="post" autocomplete="off">

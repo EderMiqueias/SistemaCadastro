@@ -20,14 +20,16 @@
     </form>
   </div>
   {% if cliente %} {% if cliente == 404 %}
-  <h1>Cliente não encontrado na base de dados :(</h1>
+  <h1 class="spanalert">Cliente não encontrado na base de dados :(</h1>
   {% else %}
-  <h1>
-    Id: {{ cliente.mid }}<br />
-    Nome: {{ cliente.nome }}<br />
-    CPF: {{ cliente.cpf }}<br />
-    Endereço: {{ cliente.endereco }}
-  </h1>
+  <div id="mtable" class="cliente_card">
+    <p>
+      Id: {{ cliente.mid }}<br />
+      Nome: {{ cliente.nome }}<br />
+      CPF: {{ cliente.cpf }}<br />
+      Endereço: {{ endereco.rua }} nº{{ endereco.numero }}, {{ endereco.cep }}
+    </p>
+  </div>
   {% endif %} {% endif %}
 </div>
 {% endblock %}

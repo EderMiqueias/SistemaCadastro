@@ -43,11 +43,16 @@ class Cliente:
             'endereco': self.endereco.toJson()
         }
     def fromJson(self,data):
+        end = data['endereco']
         return Cliente(
             mid=data['id'],
             nome=data['nome'],
             cpf=data['cpf'],
-            endereco=data['endereco']
+            endereco=Endereco(
+                rua=end['rua'],
+                cep=end['cep'],
+                numero=end['numero']
+            )
         )
     def fromCpf(self, cpf):
         db = getdb()
