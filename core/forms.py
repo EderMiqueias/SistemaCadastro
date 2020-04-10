@@ -26,7 +26,7 @@ class ClienteModelForm(forms.Form):
         self.db.clientes.insert_one(
             cliente.toJson()
         )
-    def verificar_cpf(self,cpf):
+    def verificarCpf(self,cpf):
         for cliente in self.db.clientes.find():
             if cpf == cliente['cpf']:
                 return True

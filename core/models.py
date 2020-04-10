@@ -42,6 +42,10 @@ class Cliente:
             'cpf': self.cpf,
             'endereco': self.endereco.toJson()
         }
+    def get(self,data):
+        if data in ('rua','cep','numero'):
+            return self.toJson()['endereco'][data]
+        return self.toJson()[data]
     def fromJson(self,data):
         end = data['endereco']
         return Cliente(

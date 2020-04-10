@@ -2,9 +2,11 @@
 <!---->
 {% block content %}
 <div>
+  {% block titulo %}
   <h1>Buscar Cliente</h1>
+  {% endblock %}
   <div id="formarea">
-    <form action="{% url 'buscar' %}" method="post">
+    <form action="{% url url_atual %}" method="post">
       {% csrf_token %}
       <table id="mtable">
         <tr>
@@ -19,6 +21,8 @@
       </div>
     </form>
   </div>
+  {% block editar_cliente %}
+  <!---->
   {% if cliente %} {% if cliente == 404 %}
   <h1 class="spanalert">Cliente não encontrado na base de dados :(</h1>
   {% else %}
@@ -30,6 +34,6 @@
       Endereço: {{ endereco.rua }} nº{{ endereco.numero }}, {{ endereco.cep }}
     </p>
   </div>
-  {% endif %} {% endif %}
+  {% endif %} {% endif %} {% endblock %}
 </div>
 {% endblock %}

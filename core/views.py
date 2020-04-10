@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ClienteModelForm
-from .models import Endereco, Cliente
-
+from .models import Cliente, Endereco
+from sistema.db import getdb
 
 def index(request):
     return redirect("home")
@@ -16,7 +16,7 @@ def cadastrar(request):
     verificar_cpf = False
     if str(request.method) == "POST":
         if formclient.is_valid():
-            verificar_cpf = formclient.verificar_cpf(formclient.cleaned_data['cpf'])
+            verificar_cpf = formclient.verificarCpf(formclient.cleaned_data['cpf'])
             if not verificar_cpf:
                 formclient.salvar()
                 formclient = ClienteModelForm()
@@ -34,13 +34,47 @@ def buscar(request):
         cliente = Cliente().fromCpf(cpf)
     content = {
         'cliente': cliente,
-        'endereco': cliente.endereco if isinstance(cliente,Cliente) else None
+        'endereco': cliente.endereco if isinstance(cliente,Cliente) else None,
+        'url_atual': 'buscar'
     }
     return render(request,"buscar.html",content)
 
 
 def editar(request):
-    return render(request,"editar.html")
+    cliente = None
+    formclient = None
+    old_cpf = None
+    if str(request.method) == "POST":
+        print(request.POST)
+        cpf = request.POST['cpf']
+        cliente = Cliente().fromCpf(cpf)
+        if len(request.POST) == 2:
+            formclient = ClienteModelForm(cliente)
+            old_cpf = cpf
+        if len(request.POST) == 8:
+            db = getdb()
+            endereco_local = Endereco(
+                rua=request.POST['rua'],
+                cep=request.POST['cep'],
+                numero=request.POST['numero']
+            )
+            cliente_local = Cliente(
+                mid=request.POST['id'],
+                nome=request.POST['nome'],
+                cpf=request.POST['cpf'],
+                endereco=endereco_local
+            )
+            old_cpf = request.POST['old_cpf']
+            db.clientes.update_one(
+                {'cpf': old_cpf}, {"$set": cliente_local.toJson()}
+            )
+    content = {
+        'formclient': formclient,
+        'url_atual': 'editar',
+        'cliente': cliente,
+        'old_cpf': old_cpf
+    }
+    return render(request,"editar.html", content)
 
 
 def buscarcep(request):

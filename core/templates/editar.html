@@ -1,7 +1,25 @@
-{% extends "layout.html" %}
+{% extends "buscar.html" %}
 <!---->
-{% block content %}
-<div>
-  <h1>Cadastrar Clientes</h1>
-</div>
+{% block titulo %}
+<h1>Editar Clientes</h1>
 {% endblock %}
+<!---->
+{% block editar_cliente %} {% if cliente %} {% if cliente == 404%}
+<h1 class="spanalert">Cliente não encontrado na base de dados :(</h1>
+{% else %}
+<h1 class="spansucesso">
+  Preencha os campos abaixo com as atualizações sobre o cliente
+</h1>
+<div id="formarea">
+  <form action="{% url 'editar' %}" method="post" autocomplete="off">
+    {% csrf_token %}
+    <table id="mtable">
+      {{ formclient }}
+    </table>
+    <input type="hidden" name="old_cpf" value="{{ old_cpf }}" />
+    <div style="text-align: right; width: 90%;">
+      <button type="submit" class="btn">Atualizar</button>
+    </div>
+  </form>
+</div>
+{% endif %} {% endif %} {% endblock %}

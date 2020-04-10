@@ -59,6 +59,17 @@
   margin: 10px;
   padding: 3px;
   border-radius: 0.2em;
+  font-size: 1.5em;
+}
+
+.spansucesso {
+  background-color: #1abc9c60;
+  border-left: 5px solid var(--mv);
+  font-size: 1.5em;
+  width: 60%;
+  margin: 30px 10px;
+  padding: 3px;
+  border-radius: 0.2em;
 }
 
 .cliente_card {
@@ -86,7 +97,6 @@
   background-color: darkslateblue;
   box-shadow: 5px 5px 0px rgb(41, 41, 41);
   color: white;
-  text-align: right;
 }
 
 h1 {
