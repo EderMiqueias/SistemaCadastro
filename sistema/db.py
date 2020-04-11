@@ -1,7 +1,7 @@
 import pymongo
 
-url = "35.193.200.100"
-port = 2323
+url = "127.0.0.1"
+port = 27017
 client = pymongo.MongoClient(host=url,port=port)
 
 def getdb():
