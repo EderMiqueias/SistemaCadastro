@@ -1,6 +1,4 @@
-from mongoengine import connect
 from sistema.db import getdb
-connect('mongo')
 
 
 class Endereco:
@@ -26,7 +24,7 @@ class Endereco:
 
 
 class Cliente:
-    id = None
+    mid = None
     nome = None
     cpf = None
     endereco = None
@@ -37,7 +35,7 @@ class Cliente:
         self.endereco = endereco
     def toJson(self):
         return {
-            'id': self.mid,
+            'mid': self.mid,
             'nome': self.nome,
             'cpf': self.cpf,
             'endereco': self.endereco.toJson()
@@ -49,7 +47,7 @@ class Cliente:
     def fromJson(self,data):
         end = data['endereco']
         return Cliente(
-            mid=data['id'],
+            mid=data['mid'],
             nome=data['nome'],
             cpf=data['cpf'],
             endereco=Endereco(

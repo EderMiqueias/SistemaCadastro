@@ -3,7 +3,7 @@ from .models import Endereco, Cliente
 from sistema.db import getdb
 
 class ClienteModelForm(forms.Form):
-    id = forms.CharField(label='Id', max_length=3)
+    mid = forms.CharField(label='Id', max_length=3)
     nome = forms.CharField(label='Nome', max_length=60)
     cpf = forms.CharField(label='CPF', max_length=11)
     rua = forms.CharField(label="Rua", max_length=100)
@@ -17,7 +17,7 @@ class ClienteModelForm(forms.Form):
             numero=self.cleaned_data['numero']
         )
         cliente = Cliente(
-            mid=self.cleaned_data['id'],
+            mid=self.cleaned_data['mid'],
             cpf=self.cleaned_data['cpf'],
             nome=self.cleaned_data['nome'],
             endereco=endereco

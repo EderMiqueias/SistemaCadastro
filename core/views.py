@@ -45,7 +45,6 @@ def editar(request):
     formclient = None
     old_cpf = None
     if str(request.method) == "POST":
-        print(request.POST)
         cpf = request.POST['cpf']
         cliente = Cliente().fromCpf(cpf)
         if len(request.POST) == 2:
@@ -53,13 +52,14 @@ def editar(request):
             old_cpf = cpf
         if len(request.POST) == 8:
             db = getdb()
+            cliente = None
             endereco_local = Endereco(
                 rua=request.POST['rua'],
                 cep=request.POST['cep'],
                 numero=request.POST['numero']
             )
             cliente_local = Cliente(
-                mid=request.POST['id'],
+                mid=request.POST['mid'],
                 nome=request.POST['nome'],
                 cpf=request.POST['cpf'],
                 endereco=endereco_local
