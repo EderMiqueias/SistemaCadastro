@@ -2,6 +2,19 @@
 <!---->
 {% block content %}
 <div>
-  <h1>Cadastrar Clientes</h1>
+  <h1>Todas as ruas cadastradas no sistema</h1>
+  <br />
+  {% if enderecos %}
+    {% for endereco in enderecos %}
+      <div id="mtable" class="cliente_card">
+        <p>
+          <b>Rua: </b>{{ endereco.rua }}<br />
+          <b>CEP: </b>{{ endereco.cep }}
+        </p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <h1 class="spanalert">Nenhum Cliente Cadastrado ainda :(</h1>
+  {% endif %}
 </div>
 {% endblock %}

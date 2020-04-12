@@ -106,7 +106,19 @@ def buscarcep(request):
 
 
 def ruas(request):
-    return render(request,"ruas.html")
+    enderecos = list()
+    ruas = list()
+    db = getdb()
+    lista_importacoes = db.clientes.find()
+    for cliente in lista_importacoes:
+        rua = cliente['endereco']['rua']
+        if not rua in ruas:
+            enderecos.append(cliente['endereco'])
+            ruas.append(rua)
+    content = {
+        'enderecos': enderecos
+    }
+    return render(request,"ruas.html", content)
 
 
 def backup(request):
