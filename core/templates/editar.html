@@ -4,7 +4,13 @@
 <h1>Editar Clientes</h1>
 {% endblock %}
 <!---->
-{% block editar_cliente %} {% if cliente %} {% if cliente == 404%}
+{% block editar_cliente %} 
+{% if sucesso_alterado %}
+<h1 class="spansucesso">
+  Cliente atualizado com sucesso!
+</h1>
+{% endif %}
+{% if cliente %} {% if cliente == 404%}
 <h1 class="spanalert">Cliente não encontrado na base de dados :(</h1>
 {% else %}
 <h1 class="spansucesso">

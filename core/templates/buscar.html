@@ -33,6 +33,7 @@
       CPF: {{ cliente.cpf }}<br />
       Endereço: {{ endereco.rua }} nº{{ endereco.numero }}, {{ endereco.cep }}
     </p>
+    <a href="{% url 'downloads' cliente.cpf %}" download="cliente_{{ cliente.cpf }}.json" style="text-decoration: none;">Download Cliente</a>
   </div>
   {% endif %} {% endif %} {% endblock %}
 </div>

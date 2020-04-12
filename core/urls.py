@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, cadastrar, buscar, editar, buscarcep, ruas, backup, home
+from .views import index, cadastrar, buscar, editar, buscarcep, ruas, backup, home, downloadcliente
 
 urlpatterns = [
     path("",index,name="index"),
@@ -9,5 +9,6 @@ urlpatterns = [
     path("editar/",editar,name="editar"),
     path("buscarcep/",buscarcep,name="buscarcep"),
     path("ruas/",ruas,name="ruas"),
-    path("backup/",backup,name="backup")
+    path("backup/",backup,name="backup"),
+    path("downloads/clientes/<str:pk>",downloadcliente,name="downloads")
 ]

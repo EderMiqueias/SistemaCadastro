@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
+from django.contrib.staticfiles.views import serve
 from .forms import ClienteModelForm
 from .models import Cliente, Endereco
 from sistema.db import getdb
+import json
+
 
 def index(request):
     return redirect("home")
@@ -27,14 +30,23 @@ def cadastrar(request):
     return render(request, 'cadastrar.html', context)
 
 
+def validar_tipo_cliente(cliente):
+    if isinstance(cliente, Cliente):
+        return cliente
+    return None
+
+
 def buscar(request):
     cliente = None
     if str(request.method) == "POST":
         cpf = request.POST['cpf']
         cliente = Cliente().fromCpf(cpf)
+        if validar_tipo_cliente(cliente):
+            arq = open(f"core/static/clientes/cliente_{cpf}.json", 'w')
+            json.dump(cliente.toJson(), arq, indent=4)
     content = {
         'cliente': cliente,
-        'endereco': cliente.endereco if isinstance(cliente,Cliente) else None,
+        'endereco': validar_tipo_cliente(cliente),
         'url_atual': 'buscar'
     }
     return render(request,"buscar.html",content)
@@ -44,6 +56,7 @@ def editar(request):
     cliente = None
     formclient = None
     old_cpf = None
+    sucesso_alterado = False
     if str(request.method) == "POST":
         cpf = request.POST['cpf']
         cliente = Cliente().fromCpf(cpf)
@@ -68,11 +81,13 @@ def editar(request):
             db.clientes.update_one(
                 {'cpf': old_cpf}, {"$set": cliente_local.toJson()}
             )
+            sucesso_alterado = True
     content = {
         'formclient': formclient,
         'url_atual': 'editar',
         'cliente': cliente,
-        'old_cpf': old_cpf
+        'old_cpf': old_cpf,
+        'sucesso_alterado':sucesso_alterado
     }
     return render(request,"editar.html", content)
 
@@ -87,3 +102,7 @@ def ruas(request):
 
 def backup(request):
     return render(request,"backup.html")
+
+
+def downloadcliente(request,pk):
+    return serve(request, f"../static/clientes/cliente_{pk}.json")
