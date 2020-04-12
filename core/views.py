@@ -30,23 +30,17 @@ def cadastrar(request):
     return render(request, 'cadastrar.html', context)
 
 
-def validar_tipo_cliente(cliente):
-    if isinstance(cliente, Cliente):
-        return cliente
-    return None
-
-
 def buscar(request):
     cliente = None
     if str(request.method) == "POST":
         cpf = request.POST['cpf']
         cliente = Cliente().fromCpf(cpf)
-        if validar_tipo_cliente(cliente):
+        if isinstance(cliente, Cliente):
             arq = open(f"core/static/clientes/cliente_{cpf}.json", 'w')
             json.dump(cliente.toJson(), arq, indent=4)
     content = {
         'cliente': cliente,
-        'endereco': validar_tipo_cliente(cliente),
+        'endereco': cliente.endereco if isinstance(cliente, Cliente) else None,
         'url_atual': 'buscar'
     }
     return render(request,"buscar.html",content)
@@ -93,7 +87,22 @@ def editar(request):
 
 
 def buscarcep(request):
-    return render(request,"buscarcep.html")
+    clientes = list()
+    db = getdb()
+    found = True
+    if str(request.method) == "POST":
+        cep = request.POST['cep']
+        lista_importacoes = db.clientes.find()
+        for cliente in lista_importacoes:
+            if str(cliente['endereco']['cep']) == cep:
+                clientes.append(cliente)
+        if not clientes:
+            found = False
+    content = {
+        'clientes': clientes,
+        'found': found
+    }
+    return render(request,"buscarcep.html",content)
 
 
 def ruas(request):

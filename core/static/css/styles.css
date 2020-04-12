@@ -121,7 +121,7 @@ h1 {
 
 #mtable input {
   border-radius: 0.5em;
-  height: 1.5em;
+  padding: 0.35em;
   width: 80%;
   color: var(--mc);
   font-family: Arial, Helvetica, sans-serif;
