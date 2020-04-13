@@ -17,15 +17,18 @@ def home(request):
 def cadastrar(request):
     formclient = ClienteModelForm(request.POST or None)
     verificar_cpf = False
+    salvo = False
     if str(request.method) == "POST":
         if formclient.is_valid():
             verificar_cpf = formclient.verificarCpf(formclient.cleaned_data['cpf'])
             if not verificar_cpf:
                 formclient.salvar()
                 formclient = ClienteModelForm()
+                salvo = True
     context = {
         'formclient': formclient,
-        'verificar_cpf': verificar_cpf
+        'verificar_cpf': verificar_cpf,
+        'salvo': salvo
     }
     return render(request, 'cadastrar.html', context)
 
@@ -119,10 +122,6 @@ def ruas(request):
         'enderecos': enderecos
     }
     return render(request,"ruas.html", content)
-
-
-def backup(request):
-    return render(request,"backup.html")
 
 
 def downloadcliente(request,pk):

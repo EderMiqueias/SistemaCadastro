@@ -8,6 +8,11 @@
     CPF de usuario já cadastrado no sistema
   </h1>
   {% endif %}
+  {% if salvo %}
+    <h1 class="spansucesso">
+      Cliente cadastrado com sucesso
+    </h1>
+  {% endif %}
   <div id="formarea">
     <form action="{% url 'cadastrar' %}" method="post" autocomplete="off">
       {% csrf_token %}
