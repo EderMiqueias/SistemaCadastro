@@ -1,0 +1,10 @@
+{
+    "mid": "1",
+    "nome": "Slim",
+    "cpf": "111",
+    "endereco": {
+        "rua": "rua1",
+        "cep": "1111",
+        "numero": "11"
+    }
+}
