@@ -1,0 +1,138 @@
+:root {
+  --mv: #1abc9c;
+  --mc: #282e33;
+}
+
+.content {
+  min-height: calc(100vh - 70px);
+}
+
+.footer {
+  height: 50px;
+  background-color: rgb(216, 216, 216);
+  padding: 10px;
+}
+.footer p {
+  text-align: left;
+}
+.footer a {
+  text-decoration: none;
+}
+
+.btn {
+  width: 30%;
+  background-color: lightgray;
+  display: inline-block;
+  border-radius: 0.5em;
+  text-decoration: none;
+  border: 0;
+  box-shadow: 3px 3px 0 3px darkgray;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.btn:active {
+  box-shadow: 0 0 0 0 darkgray, inset 4px 4px 4px darkgray;
+  transform: translate(6px, 6px);
+  color: black;
+}
+
+.navbar {
+  background-color: var(--mc);
+  border-radius: 0.5em;
+  position: relative;
+  border: 3px outset rgb(0, 0, 0);
+  padding: 15px;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: large;
+  margin-right: 25px;
+}
+
+.spanalert {
+  background-color: rgba(220, 20, 60, 0.349);
+  border-left: 5px solid crimson;
+  width: 60%;
+  margin: 10px;
+  padding: 3px;
+  border-radius: 0.2em;
+  font-size: 1.5em;
+}
+
+.spansucesso {
+  background-color: #1abc9c60;
+  border-left: 5px solid var(--mv);
+  font-size: 1.5em;
+  width: 60%;
+  margin: 30px 10px;
+  padding: 3px;
+  border-radius: 0.2em;
+}
+
+.cliente_card {
+  margin: 20px 10px;
+  max-width: 40%;
+  box-shadow: 5px 5px 0px darkgray;
+  color: var(--mc);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#conteudo {
+  background-color: mediumslateblue;
+  padding: 2px;
+  width: 40%;
+  box-shadow: 5px 5px 0px darkgray;
+  margin: 2%;
+  color: rgb(54, 54, 54);
+  text-align: left;
+  border-radius: 0.5em;
+  transition: 1s;
+  cursor: default;
+}
+
+#conteudo:hover {
+  background-color: darkslateblue;
+  box-shadow: 5px 5px 0px rgb(41, 41, 41);
+  color: white;
+}
+
+h1 {
+  font-family: "Titillium Web", sans-serif;
+  margin: 20px;
+}
+
+#mtable {
+  background-color: lightgray;
+  border-radius: 0.5em;
+  padding: 20px;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+#mtable th {
+  font-size: 1.3em;
+  color: var(--mc);
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: right;
+}
+
+#mtable input {
+  border-radius: 0.5em;
+  padding: 0.35em;
+  width: 80%;
+  color: var(--mc);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+
+#formarea {
+  background-color: mediumslateblue;
+  box-shadow: 3px 3px 0 3px darkslateblue;
+  padding: 15px;
+  border-radius: 0.5em;
+  width: 60%;
+  margin: 10px;
+}

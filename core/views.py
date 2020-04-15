@@ -33,18 +33,27 @@ def cadastrar(request):
     return render(request, 'cadastrar.html', context)
 
 
+def gerar_arquivo_cliente(cliente):
+    arq = open(f"core/static/clientes/cliente_{cliente.cpf}.json", 'w')
+    json.dump(cliente.toJson(), arq, indent=4)
+    arqroot = open(f"staticroot/clientes/cliente_{cliente.cpf}.json", 'w')
+    json.dump(cliente.toJson(), arqroot, indent=4)
+
+
 def buscar(request):
     cliente = None
+    cliente_download = None
     if str(request.method) == "POST":
         cpf = request.POST['cpf']
         cliente = Cliente().fromCpf(cpf)
         if isinstance(cliente, Cliente):
-            arq = open(f"core/static/clientes/cliente_{cpf}.json", 'w')
-            json.dump(cliente.toJson(), arq, indent=4)
+            gerar_arquivo_cliente(cliente)
+            cliente_download = f"clientes/cliente_{cliente.cpf}.json"
     content = {
         'cliente': cliente,
         'endereco': cliente.endereco if isinstance(cliente, Cliente) else None,
-        'url_atual': 'buscar'
+        'url_atual': 'buscar',
+        'cliente_download': cliente_download
     }
     return render(request,"buscar.html",content)
 
@@ -122,7 +131,3 @@ def ruas(request):
         'enderecos': enderecos
     }
     return render(request,"ruas.html", content)
-
-
-def downloadcliente(request,pk):
-    return serve(request, f"../static/clientes/cliente_{pk}.json")

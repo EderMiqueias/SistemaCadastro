@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (index, cadastrar, buscar,
-    editar, buscarcep, ruas, home, downloadcliente
+    editar, buscarcep, ruas, home
 )
 
 urlpatterns = [
@@ -10,6 +10,5 @@ urlpatterns = [
     path("buscar/",buscar,name="buscar"),
     path("editar/",editar,name="editar"),
     path("buscarcep/",buscarcep,name="buscarcep"),
-    path("ruas/",ruas,name="ruas"),
-    path("downloads/clientes/<str:pk>",downloadcliente,name="downloads")
+    path("ruas/",ruas,name="ruas")
 ]

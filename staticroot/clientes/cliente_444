@@ -1,0 +1,10 @@
+{
+    "mid": "4",
+    "nome": "perera da silva",
+    "cpf": "444",
+    "endereco": {
+        "rua": "rua da 12",
+        "cep": "4455",
+        "numero": "45"
+    }
+}
