@@ -5,38 +5,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema Cadastro</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}" />
     <link
       href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
   </head>
 
   <body>
-    <div class="content">
-      <nav class="navbar fixed-top">
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'cadastrar' %}">Cadastrar</a>
-        <a href="{% url 'buscar' %}">Buscar</a>
-        <a href="{% url 'editar' %}">Editar</a>
-        <a href="{% url 'buscarcep' %}">Buscar CEP</a>
-        <a href="{% url 'ruas' %}">Ruas</a>
-      </nav>
+    <div class="container">
+      <header class="cabecalho">
+        <button class="btn-menu">
+          <i class="fa fa-bars fa-lg"></i>
+        </button>
+        <nav class="menu">
+          <a class="btn-close"><i class="fa fa-times"></i></a>
+          <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'cadastrar' %}">Cadastrar</a></li>
+            <li><a href="{% url 'buscar' %}">Buscar</a></li>
+            <li><a href="{% url 'editar' %}">Editar</a></li>
+            <li><a href="{% url 'buscarcep' %}">Buscar CEP</a></li>
+            <li><a href="{% url 'ruas' %}">Ruas</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <div class="container">
       {% block content %}
       <h1>Sem conteudo</h1>
       {% endblock %}
-      <br />
     </div>
+    <footer class="footer container">
+      <p>
+        <a href="https://www.instagram.com/miqueias85594/">
+          Eder Miqueias
+        </a>
+        |
+        <a href="http://www.uast.ufrpe.br/">
+          UFRPE UAST
+        </a>
+      </p>
+    </footer>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+      $(".btn-menu").click(function () {
+        $(".menu").show();
+      });
+      $(".btn-close").click(function () {
+        $(".menu").hide();
+      });
+    </script>
   </body>
-  <footer class="footer">
-    <p>
-      <a href="https://www.instagram.com/miqueias85594/">
-        Eder Miqueias
-      </a>
-      |
-      <a href="http://www.uast.ufrpe.br/">
-        UFRPE UAST
-      </a>
-    </p>
-  </footer>
 </html>
