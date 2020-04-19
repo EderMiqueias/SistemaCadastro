@@ -2,38 +2,41 @@
 <!---->
 {% block content %}
 <div>
-  <h1>Buscar Clientes por CEP</h1>
-  <div id="formarea">
+  <h1 class="title">Buscar Clientes por CEP</h1>
+  <div class="formarea">
     <form action="{% url 'buscarcep' %}" method="post">
       {% csrf_token %}
-      <table id="mtable">
+      <table class="mtable">
         <tr>
-          <th><label for="id_cep">CEP:</label></th>
           <td>
-            <input type="text" name="cep" maxlength="8" required id="id_cep" />
+            <input
+              placeholder="CEP"
+              type="text"
+              name="cep"
+              maxlength="8"
+              required
+              id="id_cep"
+            />
           </td>
         </tr>
       </table>
-      <div style="text-align: right; width: 90%;">
+      <div style="text-align: right;">
         <button type="submit" class="btn">Buscar</button>
       </div>
     </form>
   </div>
   <div>
-    {% if clientes %}
-      {% for cliente in clientes %}
-        <div id="mtable" class="cliente_card">
-          <p>
-            Id: {{ cliente.mid }}<br />
-            Nome: {{ cliente.nome }}<br />
-            Endereço: {{ cliente.endereco.rua }}
-            nº{{ cliente.endereco.numero }}, {{ cliente.endereco.cep }}
-          </p>
-        </div>
-      {% endfor %}
-    {% endif %}
-    {% if not found %}
-      <h1 class="spanalert">Nenhum cliente neste CEP encontrado :(</h1>
+    {% if clientes %} {% for cliente in clientes %}
+    <div class="formarea">
+      <p>
+        Id: {{ cliente.mid }}<br />
+        Nome: {{ cliente.nome }}<br />
+        Endereço: {{ cliente.endereco.rua }} nº{{ cliente.endereco.numero }},
+        {{cliente.endereco.cep }}
+      </p>
+    </div>
+    {% endfor %} {% endif %} {% if not found %}
+    <h1 class="spanalert">Nenhum cliente neste CEP encontrado :(</h1>
     {% endif %}
   </div>
 </div>

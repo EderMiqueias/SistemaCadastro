@@ -1,29 +1,27 @@
 {% extends "buscar.html" %}
 <!---->
 {% block titulo %}
-<h1>Editar Clientes</h1>
+<h1 class="title">Editar Clientes</h1>
 {% endblock %}
 <!---->
-{% block editar_cliente %} 
-{% if sucesso_alterado %}
+{% block editar_cliente %} {% if sucesso_alterado %}
 <h1 class="spansucesso">
   Cliente atualizado com sucesso!
 </h1>
-{% endif %}
-{% if cliente %} {% if cliente == 404%}
+{% endif %} {% if cliente %} {% if cliente == 404%}
 <h1 class="spanalert">Cliente não encontrado na base de dados :(</h1>
 {% else %}
 <h1 class="spansucesso">
   Preencha os campos abaixo com as atualizações sobre o cliente
 </h1>
-<div id="formarea">
+<div class="formarea">
   <form action="{% url 'editar' %}" method="post" autocomplete="off">
     {% csrf_token %}
-    <table id="mtable">
+    <table class="mtable">
       {{ formclient }}
     </table>
     <input type="hidden" name="old_cpf" value="{{ old_cpf }}" />
-    <div style="text-align: right; width: 90%;">
+    <div style="text-align: right;">
       <button type="submit" class="btn">Atualizar</button>
     </div>
   </form>

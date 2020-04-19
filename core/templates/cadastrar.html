@@ -2,24 +2,23 @@
 <!---->
 {% block content %}
 <div>
-  <h1>Cadastrar Clientes</h1>
+  <h1 class="title">Cadastrar Clientes</h1>
   {% if verificar_cpf %}
-  <h1 class="spanalert">
+  <h1 class="span spanalert">
     CPF de usuario já cadastrado no sistema
   </h1>
+  {% endif %} {% if salvo %}
+  <h1 class="span spansucesso">
+    Cliente cadastrado com sucesso
+  </h1>
   {% endif %}
-  {% if salvo %}
-    <h1 class="spansucesso">
-      Cliente cadastrado com sucesso
-    </h1>
-  {% endif %}
-  <div id="formarea">
+  <div class="formarea">
     <form action="{% url 'cadastrar' %}" method="post" autocomplete="off">
       {% csrf_token %}
-      <table id="mtable">
+      <table class="mtable">
         {{ formclient }}
       </table>
-      <div style="text-align: right; width: 90%;">
+      <div class="mtable" style="text-align: right;">
         <button type="submit" class="btn">Adicionar</button>
       </div>
     </form>

@@ -1,23 +1,28 @@
-{% extends "layout.html" %}
-{% load static %}
+{% extends "layout.html" %} {% load static %}
 <!---->
 {% block content %}
 <div>
   {% block titulo %}
-  <h1>Buscar Cliente</h1>
+  <h1 class="title">Buscar Cliente</h1>
   {% endblock %}
-  <div id="formarea">
+  <div class="formarea">
     <form action="{% url url_atual %}" method="post">
       {% csrf_token %}
-      <table id="mtable">
+      <table class="mtable">
         <tr>
-          <th><label for="id_cpf">CPF:</label></th>
           <td>
-            <input type="text" name="cpf" maxlength="11" required id="id_cpf" />
+            <input
+              placeholder="CPF"
+              type="text"
+              name="cpf"
+              maxlength="11"
+              required
+              id="id_cpf"
+            />
           </td>
         </tr>
       </table>
-      <div style="text-align: right; width: 90%;">
+      <div style="text-align: right;">
         <button type="submit" class="btn">Buscar</button>
       </div>
     </form>
@@ -27,14 +32,19 @@
   {% if cliente %} {% if cliente == 404 %}
   <h1 class="spanalert">Cliente não encontrado na base de dados :(</h1>
   {% else %}
-  <div id="mtable" class="cliente_card">
+  <div class="formarea">
     <p>
       Id: {{ cliente.mid }}<br />
       Nome: {{ cliente.nome }}<br />
       CPF: {{ cliente.cpf }}<br />
       Endereço: {{ endereco.rua }} nº{{ endereco.numero }}, {{ endereco.cep }}
     </p>
-    <a href="{% static cliente_download %}" download="cliente_{{ cliente.cpf }}.json" style="text-decoration: none;">Download Cliente</a>
+    <a
+      href="{% static cliente_download %}"
+      download="cliente_{{ cliente.cpf }}.json"
+      style="text-decoration: none;"
+      >Download Cliente</a
+    >
   </div>
   {% endif %} {% endif %} {% endblock %}
 </div>

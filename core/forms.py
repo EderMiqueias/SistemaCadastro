@@ -2,14 +2,23 @@ from django import forms
 from .models import Endereco, Cliente
 from sistema.db import getdb
 
+
+class ModeloCharField(forms.CharField):
+    def __init__(self, name, ml):
+        super().__init__(max_length=ml, label='', widget=forms.TextInput(
+            attrs={'placeholder': f'{name}', 'style': 'margin: 1% 0'}
+        ))
+
+
 class ClienteModelForm(forms.Form):
-    mid = forms.CharField(label='Id', max_length=3)
-    nome = forms.CharField(label='Nome', max_length=60)
-    cpf = forms.CharField(label='CPF', max_length=11)
-    rua = forms.CharField(label="Rua", max_length=100)
-    cep = forms.IntegerField(label='CEP')
-    numero = forms.IntegerField(label='Numero')
+    mid = ModeloCharField('Id', 3)
+    nome = ModeloCharField('Nome', 60)
+    cpf = ModeloCharField('CPF', 11)
+    rua = ModeloCharField('Rua', 100)
+    cep = ModeloCharField('CEP', 8)
+    numero = ModeloCharField('N°', 4)
     db = getdb()
+
     def salvar(self):
         endereco = Endereco(
             rua=self.cleaned_data['rua'],
@@ -22,11 +31,12 @@ class ClienteModelForm(forms.Form):
             nome=self.cleaned_data['nome'],
             endereco=endereco
         )
-        print("Cliente registrado como:",cliente.nome)
+        print("Cliente registrado como:", cliente.nome)
         self.db.clientes.insert_one(
             cliente.toJson()
         )
-    def verificarCpf(self,cpf):
+
+    def verificarCpf(self, cpf):
         for cliente in self.db.clientes.find():
             if cpf == cliente['cpf']:
                 return True
