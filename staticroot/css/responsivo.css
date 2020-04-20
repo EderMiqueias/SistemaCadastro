@@ -11,7 +11,8 @@
 
 body {
   background-color: #f0f0f0;
-  height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -31,6 +32,11 @@ a {
   padding: 2% 4%;
 }
 
+.title {
+  font-size: xx-large;
+  font-weight: 300;
+}
+
 .btn-menu {
   width: 56px;
   height: 56px;
@@ -38,7 +44,7 @@ a {
   float: left;
   text-align: center;
   cursor: pointer;
-  background: var(--gradient);
+  background: #cecece;
 }
 
 .btn-close {
@@ -49,10 +55,24 @@ a {
   margin: 7% 7% 0 0;
 }
 
+.btn {
+  width: 30%;
+  background-color: lightgray;
+  border-radius: 0.5em;
+  text-decoration: none;
+  border: 0;
+  padding: 1% 2%;
+  cursor: pointer;
+}
+
+.btn:active {
+  background-color: darkgray;
+}
+
 .footer {
   background-color: rgb(207, 207, 207);
   bottom: 0;
-  position: absolute;
+  margin-top: 2%;
 }
 
 .menu {
@@ -86,7 +106,7 @@ a {
   border: 1px solid var(--ma);
 }
 
-#conteudo {
+.conteudo {
   background: var(--gradient);
   padding: 2%;
   width: 60%;
@@ -99,12 +119,12 @@ a {
   min-height: 56px;
 }
 
-#conteudo:nth-child(1) {
+.conteudo:nth-child(1) {
   margin-top: 0;
 }
 
-#conteudo:hover {
-  background: var(--gradient);
+.conteudo:hover {
+  background: linear-gradient(141deg, #2cb5e8 0%, #1fc8db 51%, #9fb8ad);
   color: white;
 }
 
@@ -112,6 +132,49 @@ a {
   width: 100%;
   float: left;
   background-color: #fff;
+  padding: 1%;
+}
+
+.span {
+  width: 100%;
+  padding: 3px;
+  border-radius: 0.2em;
+  font-weight: 300;
+}
+
+.spanalert {
+  background-color: rgba(220, 20, 60, 0.349);
+  border-left: 5px solid crimson;
+}
+
+.spansucesso {
+  background-color: #1abc9c60;
+  border-left: 5px solid var(--mv);
+}
+
+.formarea {
+  background-color: #fff;
+  border-radius: 0.5em;
+  width: 100%;
+  box-shadow: 1px 1px 5px 1px #07303560;
+  margin: 3% 0;
+  padding: 2%;
+}
+
+.mtable {
+  border-radius: 0.5em;
+  padding: 1%;
+  width: 100%;
+}
+
+.mtable input {
+  border-radius: 0.5em;
+  padding: 0.5em;
+  width: 100%;
+  color: var(--mc);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  border: 1px solid #cecece;
 }
 
 @media screen and (min-width: 800px) {
@@ -125,7 +188,7 @@ a {
     box-shadow: 5px 5px 0 darkgray;
   }
   #conteudo:hover {
-    box-shadow: 5px 5px 0px rgb(41, 41, 41);
+    box-shadow: 5px 5px 0px rgb(117, 117, 117);
   }
   .menu {
     width: auto;
