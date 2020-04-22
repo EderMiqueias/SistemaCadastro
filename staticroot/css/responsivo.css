@@ -1,10 +1,19 @@
+:root {
+  --mv: #1abc9c;
+  --mc: #282e33;
+  --ma: #1fc8db;
+  --ce: #cecece;
+  --w: #fff;
+  --gradient: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8);
+}
+
 * {
   margin: 0;
   padding: 0;
   font-size: 100%;
   border: none;
   outline: none;
-  font-weight: 300;
+  font-weight: 600;
   box-sizing: border-box;
   font-family: "Titillium Web", sans-serif;
 }
@@ -17,13 +26,6 @@ body {
 
 a {
   text-decoration: none;
-}
-
-:root {
-  --mv: #1abc9c;
-  --mc: #282e33;
-  --ma: #1fc8db;
-  --gradient: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8);
 }
 
 .container {
@@ -41,15 +43,16 @@ a {
   width: 56px;
   height: 56px;
   border-radius: 56px;
-  float: left;
+  float: right;
   text-align: center;
   cursor: pointer;
-  background: #cecece;
+  background: var(--ce);
+  margin-top: 25px;
 }
 
 .btn-close {
   font-size: 3em;
-  color: #fff;
+  color: var(--w);
   float: right;
   cursor: pointer;
   margin: 7% 7% 0 0;
@@ -66,13 +69,27 @@ a {
 }
 
 .btn:active {
-  background-color: darkgray;
+  background-color: var(--ce);
 }
 
 .footer {
-  background-color: rgb(207, 207, 207);
+  background: var(--gradient);
   bottom: 0;
-  margin-top: 2%;
+  margin-top: 4%;
+  padding-top: 6%;
+  text-align: center;
+}
+
+.social-icons a {
+  font-size: 1.5em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-right: 3%;
+}
+.social-icons a:last-child {
+  margin-right: 0;
+}
+.social-icons a:hover {
+  color: rgb(255, 255, 255);
 }
 
 .menu {
@@ -99,39 +116,72 @@ a {
 .menu li a {
   padding: 1.5% 3%;
   font-size: 2em;
-  color: #fff;
+  color: var(--w);
 }
 
 .menu li a:hover {
   border: 1px solid var(--ma);
 }
 
+.formarea {
+  background-color: var(--w);
+  border-radius: 0.5em;
+  width: 100%;
+  box-shadow: 1px 1px 5px 1px #07303560;
+  margin: 3% 0;
+  padding: 2%;
+}
+
 .conteudo {
   background: var(--gradient);
   padding: 2%;
-  width: 60%;
-  margin: 2% 0;
+  width: 100%;
   color: rgb(54, 54, 54);
   text-align: left;
   border-radius: 0.5em;
   transition: 1s;
   cursor: default;
-  min-height: 56px;
-}
-
-.conteudo:nth-child(1) {
-  margin-top: 0;
+  font-size: 1.25em;
+  margin: 6% 0;
 }
 
 .conteudo:hover {
   background: linear-gradient(141deg, #2cb5e8 0%, #1fc8db 51%, #9fb8ad);
-  color: white;
+  color: var(--w);
+}
+
+.scopo {
+  width: 100%;
+  text-align: left;
+  padding: 2% 0;
+  margin: 0;
+}
+
+.scopo h1 {
+  font-size: 1.25em;
+}
+
+.img {
+  width: 50%;
+}
+
+.imgc {
+  text-align: center;
+}
+
+.logo {
+  float: left;
+  height: 56px;
+  font-size: 0;
+  height: 100px;
+  width: 100px;
+  background: url(../images/logo2.png) no-repeat;
 }
 
 .cabecalho {
   width: 100%;
   float: left;
-  background-color: #fff;
+  background-color: var(--w);
   padding: 1%;
 }
 
@@ -152,15 +202,6 @@ a {
   border-left: 5px solid var(--mv);
 }
 
-.formarea {
-  background-color: #fff;
-  border-radius: 0.5em;
-  width: 100%;
-  box-shadow: 1px 1px 5px 1px #07303560;
-  margin: 3% 0;
-  padding: 2%;
-}
-
 .mtable {
   border-radius: 0.5em;
   padding: 1%;
@@ -174,28 +215,29 @@ a {
   color: var(--mc);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1em;
-  border: 1px solid #cecece;
+  border: 1px solid var(--ce);
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 750px) {
   .btn-menu {
     display: none;
   }
   .btn-close {
     display: none;
   }
-  #conteudo {
-    box-shadow: 5px 5px 0 darkgray;
+  .conteudo {
+    box-shadow: 5px 5px 0 var(--ce);
+    width: 40%;
   }
-  #conteudo:hover {
+  .conteudo:hover {
     box-shadow: 5px 5px 0px rgb(117, 117, 117);
   }
   .menu {
     width: auto;
     height: 56px;
     line-height: 56px;
-    float: left;
-    background-color: #fff;
+    float: right;
+    background-color: var(--w);
     display: block !important;
     position: static;
   }
@@ -204,12 +246,24 @@ a {
     float: left;
   }
   .menu li a {
-    color: #130400;
-    font-size: 1em;
+    color: #000c13;
+    font-size: 1.4em;
     padding: 15px;
   }
   .menu li a:hover {
     border: none;
     color: var(--ma);
+  }
+  .logo {
+    width: 300px;
+    background: url(../images/logo.png) no-repeat;
+  }
+  .scopo {
+    width: 42%;
+    float: left;
+    margin: 2% 4%;
+  }
+  .mpadding {
+    padding: 8% 4%;
   }
 }
