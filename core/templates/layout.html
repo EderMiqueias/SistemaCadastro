@@ -14,11 +14,13 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
     />
+    <link rel="icon" href="{% static 'images/icon.png' %}" />
   </head>
 
   <body>
     <div class="container">
       <header class="cabecalho">
+        <a href="{% url 'home' %}"><h1 class="logo"></h1></a>
         <button class="btn-menu">
           <i class="fa fa-bars fa-lg"></i>
         </button>
@@ -42,13 +44,12 @@
     </div>
     <footer class="footer container">
       <p>
-        <a href="https://www.instagram.com/miqueias85594/">
-          Eder Miqueias
-        </a>
-        |
-        <a href="http://www.uast.ufrpe.br/">
-          UFRPE UAST
-        </a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/eder.miqueias"><i class="fa fa-facebook"></i></a>
+          <a href="https://www.instagram.com/miqueias85594/"><i class="fa fa-instagram"></i></a>
+          <a href="https://github.com/EderMiqueias/"><i class="fa fa-github"></i></a>
+          <a href="https://br.linkedin.com/in/eder-miqueias-027865188"><i class="fa fa-linkedin"></i></a>
+        </div>
       </p>
     </footer>
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>

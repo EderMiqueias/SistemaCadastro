@@ -1,15 +1,41 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% load static %}
 <!---->
 {% block content %}
-<div>
-  <div class="conteudo">
-    <h1>Sistema de Cadastro</h1>
-  </div>
-  <div class="conteudo">
-    <h1>Python no Backend</h1>
-  </div>
-  <div class="conteudo">
-    <h1>Cliente Mongodb</h1>
-  </div>
+
+<main>
+  <article class="scopo">
+    <div class="formarea mpadding">
+      <div class="imgc">
+        <img src="{% static 'images/python_logo.png' %}" class="img" />
+      </div>
+      <h1>Python no Backend</h1>
+      <p>
+        Apesar de não utilizar todos os seus recursos, a biblioteca django foi o
+        reponsavel por definir as rotas, todo processamento de dados e o envio
+        de informações para os templates.
+      </p>
+    </div>
+  </article>
+  <article class="scopo">
+    <div class="formarea mpadding">
+      <div class="imgc">
+        <img src="{% static 'images/mongodb_logo.png' %}" class="img" />
+      </div>
+      <h1>Cliente Mongodb</h1>
+      <p>
+        Um banco de dados NoSQL foi escolhido devido sua facilidade e agilidade.
+        A biblioteca pymongo se responsabilizou pela conexão entre o sistema e
+        os registros no db.
+      </p>
+    </div>
+  </article>
+</main>
+<div class="container formarea conteudo">
+  <img src="{% static 'images/sobre_logo.png' %}" />
+  <p>
+    Um sistema genérico onde você poderá cadastrar algumas informações sobre
+    clientes, fazer buscas e editar os mesmos. Considere as funcionalidades.
+  </p>
 </div>
+
 {% endblock %}
